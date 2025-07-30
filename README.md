@@ -106,9 +106,10 @@ Ctrl + Shift + S               # Screenshot selection to clipboard
 - **Auto-refresh**: Updates on workspace changes
 
 ### Borders Integration
-- **Active window**: Light gray border `󰝥 0xffe1e3e4`
-- **Inactive windows**: Dark gray border `󰝤 0xff494d64`
-- **Border width**: 2.0px
+- **Style**: Square borders (no gap, snaps to window edge)
+- **Active window**: Soft blue border ` 0xff8aadf4`
+- **Inactive windows**: Dark gray border ` 0xff494d64`
+- **Border width**: 1.5px (subtle and clean)
 
 ## 🤖 Auto-Assignment Rules
 
