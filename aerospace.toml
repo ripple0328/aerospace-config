@@ -25,9 +25,6 @@ exec-on-workspace-change = [
 ]
 
 
-
-
-
 # Start AeroSpace at login
 start-at-login = true
 
@@ -147,12 +144,15 @@ alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-alt-shift-semicolon = ['mode service', 'exec-and-forget ~/.config/sketchybar/plugins/aerospace_mode.sh service']
+alt-shift-semicolon = [
+	'mode service',
+	'exec-and-forget ~/.config/sketchybar/plugins/aerospace_mode.sh service',
+]
 
-cmd-shift-b = 'exec-and-forget open -a "Google Chrome" --args --profile-directory="Default"'
+cmd-shift-b = 'exec-and-forget open -na "Google Chrome" --args --profile-directory="Default"'
 cmd-shift-w = 'exec-and-forget open -a "Google Chrome" --args --profile-directory="Profile 1"'
-cmd-shift-t = 'exec-and-forget open -a "Alacritty"'
-cmd-shift-s = 'exec-and-forget open -a "Safari"'
+cmd-shift-t = 'exec-and-forget open -na "Alacritty"'
+cmd-shift-s = 'exec-and-forget open -na "Safari"'
 cmd-shift-a = 'exec-and-forget open -a "ChatGPT"'
 cmd-shift-e = 'exec-and-forget open -a "Emacs"'
 cmd-shift-c = 'exec-and-forget open -a "Calendar"'
@@ -167,16 +167,44 @@ ctrl-shift-s = 'exec-and-forget screencapture -i -c'
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
-esc = ['reload-config', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/aerospace_mode.sh main']
-r = ['flatten-workspace-tree', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/aerospace_mode.sh main'] # reset layout
+esc = [
+	'reload-config',
+	'mode main',
+	'exec-and-forget ~/.config/sketchybar/plugins/aerospace_mode.sh main',
+]
+r = [
+	'flatten-workspace-tree',
+	'mode main',
+	'exec-and-forget ~/.config/sketchybar/plugins/aerospace_mode.sh main',
+] # reset layout
 #s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-f = ['layout floating tiling']                             # Toggle between floating and tiling layout
-backspace = ['close-all-windows-but-current', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/aerospace_mode.sh main']
+f = ['layout floating tiling'] # Toggle between floating and tiling layout
+backspace = [
+	'close-all-windows-but-current',
+	'mode main',
+	'exec-and-forget ~/.config/sketchybar/plugins/aerospace_mode.sh main',
+]
 
-alt-shift-h = ['join-with left', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/aerospace_mode.sh main']
-alt-shift-j = ['join-with down', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/aerospace_mode.sh main']
-alt-shift-k = ['join-with up', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/aerospace_mode.sh main']
-alt-shift-l = ['join-with right', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/aerospace_mode.sh main']
+alt-shift-h = [
+	'join-with left',
+	'mode main',
+	'exec-and-forget ~/.config/sketchybar/plugins/aerospace_mode.sh main',
+]
+alt-shift-j = [
+	'join-with down',
+	'mode main',
+	'exec-and-forget ~/.config/sketchybar/plugins/aerospace_mode.sh main',
+]
+alt-shift-k = [
+	'join-with up',
+	'mode main',
+	'exec-and-forget ~/.config/sketchybar/plugins/aerospace_mode.sh main',
+]
+alt-shift-l = [
+	'join-with right',
+	'mode main',
+	'exec-and-forget ~/.config/sketchybar/plugins/aerospace_mode.sh main',
+]
 
 
 # terminal
