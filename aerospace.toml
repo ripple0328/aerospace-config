@@ -142,6 +142,7 @@ alt-f = 'fullscreen'
 
 # Disable conflicting macOS shortcuts
 cmd-h = []
+cmd-enter = 'exec-and-forget open -na Alacritty'
 
 # ============================================================================
 # WINDOW MODE - Advanced window operations
@@ -305,17 +306,17 @@ esc = [
 ]
 
 # Application launching (semantic keys)
-t = ['exec-and-forget open -na "Alacritty"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+t = ['exec-and-forget open -na "Warp"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 b = ['exec-and-forget open -na "Google Chrome" --args --profile-directory="Default"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 shift-b = ['exec-and-forget open -a "Google Chrome" --args --profile-directory="Profile 1"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 s = ['exec-and-forget open -na "Safari"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 z = ['exec-and-forget open -na "Zed"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 e = ['exec-and-forget open -a "Emacs"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 c = ['exec-and-forget open -a "Calendar"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+shift-c = ['exec-and-forget open -a "Google Chat"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 a = ['exec-and-forget open -a "ChatGPT"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 m = ['exec-and-forget open -a "Mail"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 f = ['exec-and-forget open -a "Finder"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
-n = ['exec-and-forget open -a "Notes"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Quick mode switching
 alt-ctrl-w = [
@@ -353,7 +354,7 @@ shift-r = ['exec-and-forget killall AeroSpace && open -a AeroSpace', 'mode main'
 t = ['exec-and-forget ~/.config/sketchybar/themes/theme-manager.sh', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # System utilities
-s = ['exec-and-forget screencapture -i -c', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+s = ['exec-and-forget screencapture -i -c ~/Desktop/screenshot-$(date +%Y%m%d-%H%M%S).png', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 shift-s = ['exec-and-forget screencapture -i ~/Desktop/screenshot-$(date +%Y%m%d-%H%M%S).png', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Quick mode switching
