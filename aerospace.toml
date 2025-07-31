@@ -310,7 +310,7 @@ b = ['exec-and-forget open -na "Google Chrome" --args --profile-directory="Defau
 shift-b = ['exec-and-forget open -a "Google Chrome" --args --profile-directory="Profile 1"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 s = ['exec-and-forget open -na "Safari"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 z = ['exec-and-forget open -na "Zed"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
-shift-e = ['exec-and-forget open -a "Emacs"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+e = ['exec-and-forget open -a "Emacs"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 c = ['exec-and-forget open -a "Calendar"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 a = ['exec-and-forget open -a "ChatGPT"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 m = ['exec-and-forget open -a "Mail"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
