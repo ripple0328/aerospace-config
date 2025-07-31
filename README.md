@@ -1,79 +1,226 @@
-# Aerospace Configuration
+# AeroSpace Configuration
 
-Current Aerospace tiling window manager setup with custom workspace organization and integrations.
+Refactored AeroSpace tiling window manager with optimized hybrid approach: frequent operations in main mode, advanced operations in focused modes.
+
+## 🚀 Hybrid Mode System
+
+### Core Philosophy
+- **Frequent operations (80%)**: Direct access in main mode with clean prefixes
+- **Advanced operations (20%)**: Organized in specialized modes
+- **Best of both worlds**: Speed for daily workflows + organization for complex operations
+
+### Mode Overview
+- **Main Mode**: Window focus/movement, workspace switching, move-to-workspace
+- **cmd-shift-w** = **Window** mode (resize, join, monitor, close operations)
+- **cmd-shift-s** = **Space** mode (move-and-follow, navigation, monitor ops)
+- **cmd-shift-l** = **Layout** mode (layouts, containers)
+- **cmd-shift-a** = **App** mode (application launching)
+- **cmd-shift-m** = **Maintenance** mode (system utilities, config, themes)
+
+### Mode Navigation
+- **Single exit**: `esc` always returns to main mode
+- **Cross-mode switching**: Jump between modes without returning to main
+- **No self-switching**: Can't switch to the mode you're already in
 
 ## 🎯 Workspace Organization
 
-### 9 Configured Workspaces
-- **1, 2, 3**: Project workspaces (organize windows by project)
+### 12 Configured Workspaces
+- **1-5**: Project workspaces (organize windows by project)
 - **A**: AI tools (ChatGPT, Google Gemini)
-- **B**: Browsers (Chrome, Safari)
+- **B**: Browsers (Chrome, Safari) 
 - **C**: Calendar
 - **E**: Editors (Zed, Emacs, Cursor)
 - **T**: Terminals (Alacritty, Warp)
 - **M**: Messages (Google Chat)
 - **Z**: Meetings (Zoom)
 
-### Workspace Switching
+## ⌨️ Keybinding Reference
+
+### Main Mode (Always Active) - Frequent Operations
+
+#### Window Operations (Immediate Access)
 ```bash
-Alt + [1,2,3,A,B,C,E,T,M,Z]    # Switch to workspace
-Alt + Shift + [same keys]       # Move window to workspace
-Alt + Tab                       # Back-and-forth between recent workspaces
-Alt + Shift + Tab              # Move workspace to next monitor
+# Window focus (vim-style) - MOST FREQUENT
+alt-h/j/k/l                    # Focus left/down/up/right
+
+# Window movement - VERY FREQUENT  
+alt-shift-h/j/k/l              # Move window left/down/up/right
 ```
 
-## ⌨️ Configured Shortcuts
-
-### Window Navigation
+#### Workspace Operations (Immediate Access)
 ```bash
-Alt + H/J/K/L                  # Focus left/down/up/right
-Alt + Shift + H/J/K/L          # Move window left/down/up/right
+# Workspace switching - VERY FREQUENT
+alt-tab                        # Back-and-forth between recent workspaces
+alt-1/2/3/4/5                  # Switch to numbered workspaces  
+alt-a/b/c/e/t/m/z              # Switch to semantic workspaces
+
+# Move window to workspace - FREQUENT
+cmd-alt-1/2/3/4/5              # Move window to numbered workspace
+cmd-alt-a/b/c/e/t/m/z          # Move window to semantic workspace
 ```
 
-### Layouts
+#### Essential Shortcuts
 ```bash
-Alt + /                        # Toggle horizontal/vertical tiling
-Alt + ,                        # Toggle accordion layout
-Alt + F                        # Fullscreen current window
+# Mode switching
+cmd-shift-w                    # Enter Window mode
+cmd-shift-s                    # Enter Space mode
+cmd-shift-l                    # Enter Layout mode  
+cmd-shift-a                    # Enter App mode
+cmd-shift-m                    # Enter Maintenance mode
+
+# Quick actions
+alt-f                          # Fullscreen current window
+
+# System overrides (disabled macOS shortcuts)
+cmd-h                          # Disabled (was "hide application")
 ```
 
-### Window Management
+### Window Mode (cmd-shift-w) - Advanced Window Operations
+
 ```bash
-Alt + Shift + -                # Shrink window (smart resize)
-Alt + Shift + =                # Expand window (smart resize)
-Alt + Q                        # Close all windows except current
+# Exit
+esc                            # Return to main mode
+
+# Resize windows
+-/=                            # Resize smart -50/+50
+shift--/=                      # Resize smart -100/+100
+
+# Join containers (repurposed hjkl since focus moved to main)
+h/j/k/l                        # Join with left/down/up/right window
+
+# Monitor operations
+m                              # Focus next monitor
+shift-m                        # Move window to next monitor
+ctrl-m                         # Move window to previous monitor
+
+# Window operations
+q                              # Close current window
+shift-q                        # Close all windows except current
+f                              # Toggle fullscreen
+
+# Cross-mode switching
+cmd-shift-l                    # → Layout mode
+cmd-shift-a                    # → App mode
+cmd-shift-m                    # → Maintenance mode
 ```
 
-### Application Launchers
+### Space Mode (cmd-shift-s) - Advanced Workspace Operations
+
 ```bash
-Cmd + Shift + T                # Launch Alacritty terminal
-Cmd + Shift + B                # Launch Chrome (Default profile)
-Cmd + Shift + W                # Launch Chrome (Profile 1)
-Cmd + Shift + S                # Launch Safari
-Cmd + Shift + A                # Launch ChatGPT
-Cmd + Shift + E                # Launch Emacs
-Cmd + Shift + C                # Launch Calendar
-Cmd + Shift + Z                # Launch Zed editor
+# Exit
+esc                            # Return to main mode
+
+# Move window and follow (repurposed keys since switching moved to main)
+1-5, a,b,c,e,t,m,z            # Move window to workspace and switch to it
+
+# Workspace navigation
+left/right                     # Previous/next workspace (wraps around)
+up/down                        # Alternative prev/next navigation
+tab                            # Toggle between recent workspaces
+
+# Monitor operations
+shift-left/right               # Move workspace to prev/next monitor
+
+# Cross-mode switching
+cmd-shift-w                    # → Window mode
+cmd-shift-l                    # → Layout mode
+cmd-shift-a                    # → App mode
+cmd-shift-m                    # → Maintenance mode
 ```
 
-### Service Mode (`Alt + Shift + ;`)
+### Layout Mode (cmd-shift-l) - Layout Control
+
 ```bash
-Esc                            # Reload config and exit service mode
-R                              # Reset/flatten workspace layout
-F                              # Toggle floating/tiling for current window
-Backspace                      # Close all windows except current
-Alt + Shift + H/J/K/L          # Join current window with direction
+# Exit
+esc                            # Return to main mode
+
+# Layout types
+t                              # Tiles layout (default tiling)
+c                              # aCcordion layout (one large pane)
+f                              # Toggle floating/tiling
+
+# Orientation control
+h                              # Force horizontal tiling
+v                              # Force vertical tiling
+
+# Container operations
+r                              # Reset/flatten workspace layout
+b                              # Balance all window sizes
+
+# Quick layout switching
+/                              # Quick tiles layout
+,                              # Quick accordion layout  
+.                              # Quick floating toggle
+
+# Cross-mode switching
+cmd-shift-w                    # → Window mode
+cmd-shift-s                    # → Space mode
+cmd-shift-a                    # → App mode
+cmd-shift-m                    # → Maintenance mode
 ```
 
-### System
+### App Mode (cmd-shift-a) - Application Launching
+
 ```bash
-Ctrl + Shift + S               # Screenshot selection to clipboard
+# Exit
+esc                            # Return to main mode
+
+# Application launching (semantic keys match workspaces)
+t                              # Launch Alacritty (Terminal → workspace T)
+b                              # Launch Chrome Default (Browser → workspace B)
+shift-b                        # Launch Chrome Profile 1 (Work browser)
+s                              # Launch Safari
+e                              # Launch Zed (Editor → workspace E)
+shift-e                        # Launch Emacs (Alternative editor)
+c                              # Launch Calendar → workspace C
+a                              # Launch ChatGPT (AI → workspace A)
+m                              # Launch Messages → workspace M
+f                              # Launch Finder
+n                              # Launch Notes
+
+# Cross-mode switching
+cmd-shift-w                    # → Window mode
+cmd-shift-s                    # → Space mode
+cmd-shift-l                    # → Layout mode
+cmd-shift-m                    # → Maintenance mode
+```
+
+### Maintenance Mode (cmd-shift-m) - System Utilities
+
+```bash
+# Exit
+esc                            # Return to main mode
+
+# Configuration management
+r                              # Reload AeroSpace configuration
+shift-r                        # Restart AeroSpace completely
+
+# Theme and visual management
+t                              # Switch SketchyBar theme
+shift-t                        # Advanced theme switch
+
+# System utilities
+s                              # Interactive screenshot to clipboard
+shift-s                        # Screenshot to Desktop with timestamp
+
+# Debug and diagnostics
+d                              # Run debug script
+l                              # Open Console app
+
+# Backup and restore
+b                              # Backup current config
+shift-b                        # Open config directory
+
+# Cross-mode switching
+cmd-shift-w                    # → Window mode
+cmd-shift-s                    # → Space mode
+cmd-shift-l                    # → Layout mode
 ```
 
 ## 🎨 Visual Configuration
 
 ### Window Gaps
-<pre>
+```
 ┌──────────────────────────────────────────────────────────────┐
 │                          ▲ 45px (Top gap)                   │
 │  ┌────────────────────────────────────────────────────────┐  │
@@ -85,31 +232,31 @@ Ctrl + Shift + S               # Screenshot selection to clipboard
 │  └────────────────────────────────────────────────────────┘  │
 │                          ▼ 5px (Bottom gap)                 │
 └──────────────────────────────────────────────────────────────┘
-</pre>
+```
 
-- **Top gap**: 45px (for menu bar clearance)
+- **Top gap**: 45px (menu bar clearance)
 - **Left/Right gaps**: 10px each
-- **Bottom gap**: 5px
+- **Bottom gap**: 5px  
 - **Inner gap**: 10px between windows
 
 ### Layout Settings
-- **Default layout**: Tiles (automatic window arrangement)
+- **Default layout**: Tiles (automatic tiling)
 - **Orientation**: Auto (wide monitors → horizontal, tall → vertical)
 - **Accordion padding**: 30px visual indicator
 
 ## 🔗 Integrations
 
 ### SketchyBar Integration
-- **Workspace indicators**: Shows current workspace in menu bar
-- **App icons**: Displays running apps in each workspace
-- **Mode indicator**: Shows service mode status
-- **Auto-refresh**: Updates on workspace changes
+- **Mode indicators**: Shows current mode in menu bar
+- **Workspace indicators**: Displays current workspace
+- **App icons**: Shows running apps in each workspace
+- **Auto-refresh**: Updates on workspace/mode changes
 
-### Borders Integration
-- **Style**: Square borders (no gap, snaps to window edge)
-- **Active window**: Soft blue border ` 0xff8aadf4`
-- **Inactive windows**: Dark gray border ` 0xff494d64`
-- **Border width**: 1.5px (subtle and clean)
+### Borders Integration  
+- **Active window**: Soft blue border `0xff8aadf4`
+- **Inactive windows**: Dark gray border `0xff494d64`
+- **Border width**: 1.5px (clean and subtle)
+- **Style**: Square borders (snaps to window edge)
 
 ## 🤖 Auto-Assignment Rules
 
@@ -117,13 +264,13 @@ Ctrl + Shift + S               # Screenshot selection to clipboard
 - Alacritty (`org.alacritty`)
 - Warp (`dev.warp.Warp-Stable`)
 
-### Browsers → Workspace B
+### Browser Apps → Workspace B  
 - Google Chrome (`com.google.Chrome`)
 - Safari (`com.apple.Safari`)
 
-### Editors → Workspace E
+### Editor Apps → Workspace E
 - Zed (`dev.zed.Zed`)
-- Emacs (`org.gnu.Emacs`)
+- Emacs (`org.gnu.Emacs`) 
 - Cursor (`com.todesktop.230313mzl4w4u92`)
 
 ### AI Tools → Workspace A
@@ -132,14 +279,14 @@ Ctrl + Shift + S               # Screenshot selection to clipboard
 
 ### Other Apps
 - **Calendar** → Workspace C
-- **Google Chat** → Workspace M
+- **Google Chat** → Workspace M  
 - **Zoom** → Workspace Z
 
 ## 🚀 Startup Behavior
 
 ### Auto-Launch
-- **Aerospace**: Starts at login
-- **SketchyBar**: Auto-launched by Aerospace
+- **AeroSpace**: Starts at login
+- **SketchyBar**: Auto-launched by AeroSpace
 - **Borders**: Auto-launched with custom colors
 
 ### Mouse Behavior
@@ -149,22 +296,71 @@ Ctrl + Shift + S               # Screenshot selection to clipboard
 ## 🛠️ Dependencies
 
 ### Required
-- **Aerospace**: Core window manager
-- **SketchyBar**: Menu bar integration
+- **AeroSpace**: Core window manager
+- **SketchyBar**: Menu bar integration  
 - **Borders**: Window border highlighting
 
-### System
+### System Requirements
 - **Accessibility permissions**: Required for window management
-- **Disabled features**: `Cmd + H` (hide application) disabled
+- **macOS shortcuts disabled**: `cmd-h` disabled to prevent conflicts
 
-## ⚡ Quick Start
+## ⚡ Quick Start Guide
 
-1. **Project workspaces**: `Alt + 1/2/3` for different projects
-2. **Tool workspaces**: `Alt + A` (AI), `Alt + B` (Browser), `Alt + E` (Editor), `Alt + T` (Terminal)
-3. **Launch apps**: `Cmd + Shift + T` (Terminal), `Cmd + Shift + B` (Chrome)
-4. **Navigate windows**: `Alt + H/J/K/L`
-5. **Service mode**: `Alt + Shift + ;` for advanced operations
+### 1. Master the Frequent Operations (Main Mode)
+```bash
+# Window management (immediate access)
+alt-h/j/k/l                    # Focus windows
+alt-shift-h/j/k/l              # Move windows
+
+# Workspace management (immediate access)  
+alt-1/2/3/4/5                  # Switch to numbered workspaces
+alt-a/b/c/e/t/m/z              # Switch to semantic workspaces
+cmd-alt-[key]                  # Move window to workspace
+```
+
+### 2. Use Modes for Advanced Operations
+```bash
+# Advanced window operations
+cmd-shift-w                    # Resize, join, monitor ops
+
+# Advanced workspace operations
+cmd-shift-s                    # Move-and-follow, navigation
+
+# Layout control
+cmd-shift-l                    # Change layouts, containers
+
+# App launching
+cmd-shift-a                    # Launch apps with semantic keys
+
+# System maintenance  
+cmd-shift-m                    # Config, themes, utilities
+```
+
+### 3. Essential Workflows
+```bash
+# Daily window management
+alt-h/j/k/l                    # Navigate between windows
+alt-shift-h/j/k/l              # Rearrange windows
+alt-1/2/3/a/b/e/t              # Switch workspaces
+
+# Launch and organize
+cmd-shift-a, t                 # Launch terminal
+cmd-shift-a, b                 # Launch browser  
+cmd-shift-a, e                 # Launch editor
+
+# Advanced operations when needed
+cmd-shift-w, -/=               # Resize windows
+cmd-shift-s, 1-5               # Move window and follow
+cmd-shift-l, t/c/f             # Change layouts
+```
+
+### 4. Power User Tips
+- **80/20 optimization**: Most frequent operations require no mode switching
+- **Cross-mode jumping**: Switch between modes without returning to main
+- **Semantic keys**: App launcher keys match workspace letters
+- **Auto-assignment**: Apps automatically move to designated workspaces
+- **Single exit**: `esc` always returns to main from any mode
 
 ---
 
-**Note**: All apps automatically move to their designated workspaces when opened. Focus with navigation keys, not mouse clicks for best experience.
+**Philosophy**: Hybrid approach optimizing for speed (frequent operations immediate) and organization (advanced operations in focused modes). Clean patterns, semantic organization, maximum efficiency.

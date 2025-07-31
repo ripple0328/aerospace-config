@@ -1,628 +1,449 @@
-# Place a copy of this config to ~/.aerospace.toml
-# After that, you can edit ~/.aerospace.toml to your liking
+# AeroSpace Configuration
+# Refactored with consistent cmd-shift-x mode switching and clean mode organization
 
-# It's not necessary to copy all keys to your config.
-# If the key is missing in your config, "default-config.toml" will serve as a fallback
+# ============================================================================
+# CORE CONFIGURATION
+# ============================================================================
 
-# You can use it to add commands that run after login to macOS user session.
-# 'start-at-login' needs to be 'true' for 'after-login-command' to work
-# Available commands: https://nikitabobko.github.io/AeroSpace/commands
-after-login-command = []
+after-login-command = [
+    'exec-and-forget sketchybar',
+    'exec-and-forget borders active_color=0xff8aadf4 inactive_color=0xff494d64 width=1.5 2>/dev/null &'
+]
 
-# You can use it to add commands that run after AeroSpace startup.
-# 'after-startup-command' is run after 'after-login-command'
-# Available commands : https://nikitabobko.github.io/AeroSpace/commands
 after-startup-command = [
-	'exec-and-forget sketchybar'
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
 ]
 
-# Notify Sketchybar about workspace change
 exec-on-workspace-change = [
-	'/bin/bash',
-	'-c',
-	'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE',
+    '/bin/bash',
+    '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
 ]
 
-
-# Start AeroSpace at login
 start-at-login = true
 
-# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 
-# See: https://nikitabobko.github.io/AeroSpace/guide#layouts
-# The 'accordion-padding' specifies the size of accordion padding
-# You can set 0 to disable the padding feature
+# Visual Configuration
 accordion-padding = 30
-
-# Possible values: tiles|accordion
 default-root-container-layout = 'tiles'
-
-# Possible values: horizontal|vertical|auto
-# 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
-#               tall monitor (anything higher than wide) gets vertical orientation
 default-root-container-orientation = 'auto'
 
-# Possible values: (qwerty|dvorak)
-# See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
+# Key mapping preset
 key-mapping.preset = 'qwerty'
 
-# Mouse follows focus when focused monitor changes
-# Drop it from your config, if you don't like this behavior
-# See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
-# See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
+# Mouse behavior
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
-# Gaps between windows (inner-*) and between monitor edges (outer-*).
-# Possible values:
-# - Constant:     gaps.outer.top = 8
-# - Per monitor:  gaps.outer.top = [{ monitor.main = 16 }, { monitor."some-pattern" = 32 }, 24]
-#                 In this example, 24 is a default value when there is no match.
-#                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
-#                 See: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+# Gap configuration
 [gaps]
-outer.top = 45
 inner.horizontal = 10
 inner.vertical = 10
 outer.left = 10
 outer.bottom = 5
+outer.top = 45
 outer.right = 10
 
 # ============================================================================
-# MAIN MODE - Minimal essential bindings + Mode switchers
+# MAIN MODE - Frequent operations + Mode switchers
 # ============================================================================
-# The main mode contains only the most essential shortcuts and mode switchers.
-# Most functionality is organized into specialized modes for better conflict
-# avoidance and memorability.
+# Most frequent operations are directly accessible with clean prefix patterns:
+# - alt-hjkl = Window focus (immediate access)
+# - alt-shift-hjkl = Window movement (immediate access)
+# - alt-[key] = Workspace switching (immediate access)
+# - cmd-alt-[key] = Move window to workspace (immediate access)
 #
-# Mode Switchers Pattern: cmd-alt-[first letter of mode name]
-# - cmd-alt-w = Window mode (focus, move, resize windows)
-# - cmd-alt-s = workSpace mode (workspace switching and management) 
-# - cmd-alt-l = Layout mode (layout switching and container operations)
-# - cmd-alt-a = App mode (application launching and system utilities)
+# Mode Switchers for advanced operations: cmd-shift-[letter]
+# - cmd-shift-w = Window mode (resize, join, monitor, close operations)
+# - cmd-shift-s = Space mode (advanced workspace operations)
+# - cmd-shift-l = Layout mode (layouts, containers)
+# - cmd-shift-a = App mode (application launching)
+# - cmd-shift-m = Maintenance mode (system utilities, config, themes)
 # ============================================================================
 
 [mode.main.binding]
 
 # ============================================================================
-# MODE SWITCHERS - cmd-alt-[letter] pattern
+# MODE SWITCHERS - cmd-shift-[letter] pattern
 # ============================================================================
-# Enter specialized modes for different types of operations
-# Same key combination toggles the mode on/off for easy access
 
-cmd-alt-w = [
-	'mode window',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh window',
-] # Window mode - focus, move, resize windows
+cmd-shift-w = [
+    'mode window',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh window',
+]
 
-cmd-alt-s = [
-	'mode workspace', 
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh workspace',
-] # workSpace mode - workspace switching and management
+cmd-shift-s = [
+    'mode space',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh space',
+]
 
-cmd-alt-l = [
-	'mode layout',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh layout', 
-] # Layout mode - layout switching and container operations
+cmd-shift-l = [
+    'mode layout',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh layout',
+]
 
-cmd-alt-a = [
-	'mode app',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh app',
-] # App mode - application launching and system utilities
+cmd-shift-a = [
+    'mode app',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh app',
+]
 
-# ============================================================================
-# ESSENTIAL SHORTCUTS - Always accessible in main mode
-# ============================================================================
-# These shortcuts remain in main mode for immediate access without mode switching
-
-alt-tab = 'workspace-back-and-forth'                # Quick workspace switching
-alt-f = 'fullscreen'                                # Toggle fullscreen
-
-# Quick access to most frequently used workspaces
-alt-t = 'workspace T'                               # Terminal workspace
-alt-b = 'workspace B'                               # Browser workspace  
-alt-e = 'workspace E'                               # Editor workspace
-
-# ============================================================================
-# SYSTEM OVERRIDES - Disable conflicting macOS shortcuts
-# ============================================================================
-# Disable macOS shortcuts that conflict with window management
-
-cmd-h = []                                          # Disable "hide application"
-cmd-alt-h = []                                      # Disable "hide others"
-
-# ============================================================================
-# LEGACY SERVICE MODE - Keep for compatibility
-# ============================================================================
-# Original service mode entry - kept for existing sketchybar integration
-
-alt-shift-semicolon = [
-	'mode service',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh service',
+cmd-shift-m = [
+    'mode maintenance',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh maintenance',
 ]
 
 # ============================================================================
-# WINDOW MODE - Complete window management operations
+# FREQUENT WINDOW OPERATIONS - Direct access with alt- prefix
 # ============================================================================
-# Enter with: cmd-alt-w
-# This mode handles all window-related operations including focus, movement,
-# resizing, joining containers, and monitor management.
-#
-# Key patterns:
-# - h/j/k/l = Focus windows (vim-style navigation)
-# - shift + hjkl = Move windows  
-# - ctrl + hjkl = Join containers
-# - minus/equal = Resize windows
-# - m = Monitor operations
-# - q = Close operations
+
+# Window focus (vim-style navigation)
+alt-h = 'focus left'
+alt-j = 'focus down'
+alt-k = 'focus up'
+alt-l = 'focus right'
+
+# Window movement
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+# ============================================================================
+# FREQUENT WORKSPACE OPERATIONS - Direct access
+# ============================================================================
+
+# Workspace switching
+alt-tab = 'workspace-back-and-forth'
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-a = 'workspace A'
+alt-b = 'workspace B'
+alt-c = 'workspace C'
+alt-e = 'workspace E'
+alt-t = 'workspace T'
+alt-m = 'workspace M'
+alt-z = 'workspace Z'
+
+# Move window to workspace (stay on current)
+cmd-alt-1 = 'move-node-to-workspace 1'
+cmd-alt-2 = 'move-node-to-workspace 2'
+cmd-alt-3 = 'move-node-to-workspace 3'
+cmd-alt-4 = 'move-node-to-workspace 4'
+cmd-alt-5 = 'move-node-to-workspace 5'
+cmd-alt-a = 'move-node-to-workspace A'
+cmd-alt-b = 'move-node-to-workspace B'
+cmd-alt-c = 'move-node-to-workspace C'
+cmd-alt-e = 'move-node-to-workspace E'
+cmd-alt-t = 'move-node-to-workspace T'
+cmd-alt-m = 'move-node-to-workspace M'
+cmd-alt-z = 'move-node-to-workspace Z'
+
+# ============================================================================
+# ESSENTIAL SHORTCUTS
+# ============================================================================
+
+alt-f = 'fullscreen'
+
+# Disable conflicting macOS shortcuts
+cmd-h = []
+
+# ============================================================================
+# WINDOW MODE - Advanced window operations
+# ============================================================================
+# Advanced operations: resize, join, monitor, close (frequent ops moved to main)
 # ============================================================================
 
 [mode.window.binding]
 
-# ============================================================================
-# MODE EXIT - Multiple ways to leave window mode
-# ============================================================================
-
+# Exit mode
 esc = [
-	'mode main',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
-] # Exit to main mode
+    'mode main',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
+]
 
-cmd-alt-w = [
-	'mode main', 
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
-] # Toggle - same key that entered the mode
+# Resize windows
+minus = 'resize smart -50'
+equal = 'resize smart +50'
+shift-minus = 'resize smart -100'
+shift-equal = 'resize smart +100'
 
-# ============================================================================ 
-# WINDOW FOCUS - Vim-style navigation
-# ============================================================================
+# Join containers
+h = 'join-with left'
+j = 'join-with down'
+k = 'join-with up'
+l = 'join-with right'
 
-h = 'focus left'                                    # Focus window to the left
-j = 'focus down'                                    # Focus window below
-k = 'focus up'                                      # Focus window above  
-l = 'focus right'                                   # Focus window to the right
+# Monitor operations
+m = 'focus-monitor --wrap-around next'
+shift-m = 'move-node-to-monitor --wrap-around next'
+ctrl-m = 'move-node-to-monitor --wrap-around prev'
 
-# ============================================================================
-# WINDOW MOVEMENT - Move windows between positions
-# ============================================================================
+# Window operations
+q = 'close'
+shift-q = 'close-all-windows-but-current'
+f = 'fullscreen'
 
-shift-h = 'move left'                               # Move window left
-shift-j = 'move down'                               # Move window down
-shift-k = 'move up'                                 # Move window up
-shift-l = 'move right'                              # Move window right
-
-# ============================================================================
-# WINDOW RESIZING - Smart resize operations
-# ============================================================================
-
-minus = 'resize smart -50'                          # Decrease window size
-equal = 'resize smart +50'                          # Increase window size  
-shift-minus = 'resize smart -100'                   # Decrease size more
-shift-equal = 'resize smart +100'                   # Increase size more
-
-# ============================================================================
-# CONTAINER JOINING - Join windows into containers
-# ============================================================================
-
-ctrl-h = 'join-with left'                           # Join with left window
-ctrl-j = 'join-with down'                           # Join with window below
-ctrl-k = 'join-with up'                             # Join with window above
-ctrl-l = 'join-with right'                          # Join with right window
+# Quick mode switching
+cmd-shift-l = [
+    'mode layout',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh layout',
+]
+cmd-shift-a = [
+    'mode app',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh app',
+]
+cmd-shift-m = [
+    'mode maintenance',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh maintenance',
+]
 
 # ============================================================================
-# MONITOR OPERATIONS - Multi-monitor window management
+# SPACE MODE - Advanced workspace operations
+# ============================================================================
+# Advanced operations: move-and-follow, navigation, monitor ops (frequent ops moved to main)
 # ============================================================================
 
-m = 'focus-monitor --wrap-around next'              # Focus next monitor
-shift-m = 'move-node-to-monitor --wrap-around next' # Move window to next monitor
-alt-m = 'move-node-to-monitor --wrap-around prev'   # Move window to previous monitor
+[mode.space.binding]
 
-# ============================================================================
-# WINDOW OPERATIONS - Close and display options
-# ============================================================================
-
-q = 'close'                                         # Close current window
-shift-q = 'close-all-windows-but-current'           # Close all other windows
-f = 'fullscreen'                                    # Toggle fullscreen
-
-# ============================================================================
-# QUICK MODE SWITCHING - Jump to other modes without exiting
-# ============================================================================
-
-cmd-alt-s = [
-	'mode workspace',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh workspace',
-] # Switch to workspace mode
-
-cmd-alt-l = [
-	'mode layout',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh layout',
-] # Switch to layout mode
-
-cmd-alt-a = [
-	'mode app',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh app',
-] # Switch to app mode
-
-# ============================================================================
-# WORKSPACE MODE - Complete workspace management
-# ============================================================================
-# Enter with: cmd-alt-s  
-# This mode handles all workspace-related operations including switching,
-# moving windows to workspaces, and workspace navigation.
-#
-# Key patterns:
-# - 1-5, a,b,c,e,t,m,z = Switch to workspace
-# - shift + key = Move current window to workspace
-# - ctrl + key = Move window to workspace and follow
-# - left/right = Navigate workspaces sequentially
-# - tab = Toggle between recent workspaces
-# ============================================================================
-
-[mode.workspace.binding]
-
-# ============================================================================
-# MODE EXIT - Multiple ways to leave workspace mode
-# ============================================================================
-
+# Exit mode
 esc = [
-	'mode main',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
-] # Exit to main mode
+    'mode main',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
+]
 
-cmd-alt-s = [
-	'mode main',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main', 
-] # Toggle - same key that entered the mode
+# Move window and follow (advanced operation)
+1 = ['move-node-to-workspace 1', 'workspace 1']
+2 = ['move-node-to-workspace 2', 'workspace 2']
+3 = ['move-node-to-workspace 3', 'workspace 3']
+4 = ['move-node-to-workspace 4', 'workspace 4']
+5 = ['move-node-to-workspace 5', 'workspace 5']
+a = ['move-node-to-workspace A', 'workspace A']
+b = ['move-node-to-workspace B', 'workspace B']
+c = ['move-node-to-workspace C', 'workspace C']
+e = ['move-node-to-workspace E', 'workspace E']
+t = ['move-node-to-workspace T', 'workspace T']
+m = ['move-node-to-workspace M', 'workspace M']
+z = ['move-node-to-workspace Z', 'workspace Z']
 
-# ============================================================================
-# NUMERIC WORKSPACES - Traditional numbered workspaces
-# ============================================================================
+# Workspace navigation
+left = 'workspace --wrap-around prev'
+right = 'workspace --wrap-around next'
+up = 'workspace --wrap-around prev'
+down = 'workspace --wrap-around next'
+tab = 'workspace-back-and-forth'
 
-1 = 'workspace 1'                                   # Switch to workspace 1
-2 = 'workspace 2'                                   # Switch to workspace 2  
-3 = 'workspace 3'                                   # Switch to workspace 3
-4 = 'workspace 4'                                   # Switch to workspace 4
-5 = 'workspace 5'                                   # Switch to workspace 5
+# Move workspaces between monitors
+shift-left = 'move-workspace-to-monitor --wrap-around prev'
+shift-right = 'move-workspace-to-monitor --wrap-around next'
 
-# ============================================================================
-# SEMANTIC WORKSPACES - Named workspaces for specific purposes
-# ============================================================================
-
-a = 'workspace A'                                   # AI workspace
-b = 'workspace B'                                   # Browser workspace
-c = 'workspace C'                                   # Calendar workspace
-e = 'workspace E'                                   # Editor workspace
-t = 'workspace T'                                   # Terminal workspace
-m = 'workspace M'                                   # Messages workspace
-z = 'workspace Z'                                   # Meeting (Zoom) workspace
-
-# ============================================================================
-# MOVE WINDOW TO WORKSPACE - Move current window to workspace (stay on current)
-# ============================================================================
-
-shift-1 = 'move-node-to-workspace 1'                # Move window to workspace 1
-shift-2 = 'move-node-to-workspace 2'                # Move window to workspace 2
-shift-3 = 'move-node-to-workspace 3'                # Move window to workspace 3
-shift-4 = 'move-node-to-workspace 4'                # Move window to workspace 4
-shift-5 = 'move-node-to-workspace 5'                # Move window to workspace 5
-
-shift-a = 'move-node-to-workspace A'                # Move window to AI workspace
-shift-b = 'move-node-to-workspace B'                # Move window to Browser workspace
-shift-c = 'move-node-to-workspace C'                # Move window to Calendar workspace
-shift-e = 'move-node-to-workspace E'                # Move window to Editor workspace  
-shift-t = 'move-node-to-workspace T'                # Move window to Terminal workspace
-shift-m = 'move-node-to-workspace M'                # Move window to Messages workspace
-shift-z = 'move-node-to-workspace Z'                # Move window to Meeting workspace
+# Quick mode switching
+cmd-shift-w = [
+    'mode window',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh window',
+]
+cmd-shift-l = [
+    'mode layout',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh layout',
+]
+cmd-shift-a = [
+    'mode app',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh app',
+]
 
 # ============================================================================
-# MOVE AND FOLLOW - Move current window to workspace and switch to it
+# LAYOUT MODE - Layout switching and container operations
 # ============================================================================
-
-ctrl-1 = ['move-node-to-workspace 1', 'workspace 1'] # Move window to workspace 1 and follow
-ctrl-2 = ['move-node-to-workspace 2', 'workspace 2'] # Move window to workspace 2 and follow
-ctrl-3 = ['move-node-to-workspace 3', 'workspace 3'] # Move window to workspace 3 and follow
-ctrl-4 = ['move-node-to-workspace 4', 'workspace 4'] # Move window to workspace 4 and follow
-ctrl-5 = ['move-node-to-workspace 5', 'workspace 5'] # Move window to workspace 5 and follow
-
-ctrl-a = ['move-node-to-workspace A', 'workspace A'] # Move to AI workspace and follow
-ctrl-b = ['move-node-to-workspace B', 'workspace B'] # Move to Browser workspace and follow
-ctrl-c = ['move-node-to-workspace C', 'workspace C'] # Move to Calendar workspace and follow
-ctrl-e = ['move-node-to-workspace E', 'workspace E'] # Move to Editor workspace and follow
-ctrl-t = ['move-node-to-workspace T', 'workspace T'] # Move to Terminal workspace and follow
-ctrl-m = ['move-node-to-workspace M', 'workspace M'] # Move to Messages workspace and follow
-ctrl-z = ['move-node-to-workspace Z', 'workspace Z'] # Move to Meeting workspace and follow
-
-# ============================================================================
-# WORKSPACE NAVIGATION - Sequential and quick navigation
-# ============================================================================
-
-left = 'workspace --wrap-around prev'               # Previous workspace (wraps around)
-right = 'workspace --wrap-around next'              # Next workspace (wraps around)
-up = 'workspace --wrap-around prev'                 # Alternative: previous workspace
-down = 'workspace --wrap-around next'               # Alternative: next workspace
-tab = 'workspace-back-and-forth'                    # Toggle between recent workspaces
-
-# ============================================================================
-# MONITOR WORKSPACE OPERATIONS - Move workspaces between monitors
-# ============================================================================
-
-shift-left = 'move-workspace-to-monitor --wrap-around prev'  # Move workspace to previous monitor
-shift-right = 'move-workspace-to-monitor --wrap-around next' # Move workspace to next monitor
-
-# ============================================================================
-# QUICK MODE SWITCHING - Jump to other modes without exiting
-# ============================================================================
-
-cmd-alt-w = [
-	'mode window',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh window',
-] # Switch to window mode
-
-cmd-alt-l = [
-	'mode layout', 
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh layout',
-] # Switch to layout mode
-
-cmd-alt-a = [
-	'mode app',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh app',
-] # Switch to app mode
-
-# ============================================================================
-# LAYOUT MODE - Layout and container management
-# ============================================================================
-# Enter with: cmd-alt-l
-# This mode handles layout switching, container operations, and workspace
-# organization. Perfect for adjusting how windows are arranged and displayed.
-#
-# Key patterns:
-# - t/a/f = Layout types (tiles/accordion/floating)
-# - h/v = Orientation (horizontal/vertical)
-# - s = Split operations  
-# - r = Reset/reload operations
-# - b = Balance window sizes
+# Layout types, container operations
 # ============================================================================
 
 [mode.layout.binding]
 
-# ============================================================================
-# MODE EXIT - Multiple ways to leave layout mode
-# ============================================================================
-
+# Exit mode
 esc = [
-	'mode main',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
-] # Exit to main mode
+    'mode main',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
+]
 
-cmd-alt-l = [
-	'mode main',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
-] # Toggle - same key that entered the mode
+# Layout types
+t = 'layout tiles horizontal vertical'
+c = 'layout accordion horizontal vertical'
+f = 'layout floating tiling'
 
-# ============================================================================
-# LAYOUT TYPES - Switch between different layout modes
-# ============================================================================
+# Orientation control
+h = 'layout tiles horizontal'
+v = 'layout tiles vertical'
 
-t = 'layout tiles horizontal vertical'              # Tiles layout (default tiling)
-a = 'layout accordion horizontal vertical'          # Accordion layout (one large pane)
-f = 'layout floating tiling'                        # Toggle floating/tiling mode
+# Container operations
+r = 'flatten-workspace-tree'
+b = 'balance-sizes'
 
-# ============================================================================
-# ORIENTATION CONTROL - Control container orientation
-# ============================================================================
+# Quick layout switching
+slash = 'layout tiles horizontal vertical'
+comma = 'layout accordion horizontal vertical'
+period = 'layout floating tiling'
 
-h = 'layout tiles horizontal'                       # Force horizontal tiling
-v = 'layout tiles vertical'                         # Force vertical tiling
-
-# ============================================================================
-# CONTAINER OPERATIONS - Advanced container management
-# ============================================================================
-
-s = 'split horizontal'                              # Split container horizontally
-shift-s = 'split vertical'                          # Split container vertically
-r = 'flatten-workspace-tree'                        # Reset/flatten workspace layout
-b = 'balance-sizes'                                 # Balance all window sizes
-
-# ============================================================================
-# QUICK LAYOUT SWITCHING - Fast layout changes with symbols
-# ============================================================================
-
-slash = 'layout tiles horizontal vertical'          # Quick tiles layout
-comma = 'layout accordion horizontal vertical'      # Quick accordion layout  
-period = 'layout floating tiling'                   # Quick floating toggle
+# Quick mode switching
+cmd-shift-w = [
+    'mode window',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh window',
+]
+cmd-shift-a = [
+    'mode app',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh app',
+]
+cmd-shift-m = [
+    'mode maintenance',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh maintenance',
+]
 
 # ============================================================================
-# SYSTEM OPERATIONS - Configuration and system management
+# APP MODE - Application launching
 # ============================================================================
-
-shift-r = 'reload-config'                           # Reload AeroSpace configuration
-
-# ============================================================================
-# QUICK MODE SWITCHING - Jump to other modes without exiting
-# ============================================================================
-
-cmd-alt-w = [
-	'mode window',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh window',
-] # Switch to window mode
-
-cmd-alt-s = [
-	'mode workspace',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh workspace', 
-] # Switch to workspace mode
-
-cmd-alt-a = [
-	'mode app',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh app',
-] # Switch to app mode
-
-# ============================================================================
-# APP MODE - Application launching and system utilities
-# ============================================================================
-# Enter with: cmd-alt-a
-# This mode handles launching applications and system utilities. Applications
-# are mapped to semantic keys that match their workspace assignments.
-#
-# Key patterns:
-# - Letter keys = Launch applications (t=terminal, b=browser, etc.)
-# - shift + key = Launch alternative version of application
-# - System utilities for screenshots, config reload, etc.
+# Launch applications with semantic keys matching workspace assignments
 # ============================================================================
 
 [mode.app.binding]
 
-# ============================================================================
-# MODE EXIT - Multiple ways to leave app mode
-# ============================================================================
-
+# Exit mode
 esc = [
-	'mode main',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
-] # Exit to main mode
+    'mode main',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
+]
 
-cmd-alt-a = [
-	'mode main',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
-] # Toggle - same key that entered the mode
+# Application launching (semantic keys)
+t = 'exec-and-forget open -na "Alacritty"'
+b = 'exec-and-forget open -na "Google Chrome" --args --profile-directory="Default"'
+shift-b = 'exec-and-forget open -a "Google Chrome" --args --profile-directory="Profile 1"'
+s = 'exec-and-forget open -na "Safari"'
+e = 'exec-and-forget open -a "Zed"'
+shift-e = 'exec-and-forget open -a "Emacs"'
+c = 'exec-and-forget open -a "Calendar"'
+a = 'exec-and-forget open -a "ChatGPT"'
+m = 'exec-and-forget open -a "Messages"'
+f = 'exec-and-forget open -a "Finder"'
+n = 'exec-and-forget open -a "Notes"'
 
-# ============================================================================ 
-# APPLICATION LAUNCHING - Semantic keys matching workspace names
-# ============================================================================
-
-t = 'exec-and-forget open -na \"Alacritty\"'         # Terminal (matches workspace T)
-b = 'exec-and-forget open -na \"Google Chrome\" --args --profile-directory=\"Default\"' # Browser (matches workspace B)
-shift-b = 'exec-and-forget open -a \"Google Chrome\" --args --profile-directory=\"Profile 1\"' # Work browser profile
-s = 'exec-and-forget open -na \"Safari\"'           # Safari browser
-e = 'exec-and-forget open -a \"Zed\"'               # Editor (matches workspace E)  
-shift-e = 'exec-and-forget open -a \"Emacs\"'       # Alternative editor
-c = 'exec-and-forget open -a \"Calendar\"'          # Calendar (matches workspace C)
-a = 'exec-and-forget open -a \"ChatGPT\"'           # AI application (matches workspace A)
-m = 'exec-and-forget open -a \"Messages\"'          # Messages (matches workspace M)
-f = 'exec-and-forget open -a \"Finder\"'            # Finder
-n = 'exec-and-forget open -a \"Notes\"'             # Notes application
-
-# ============================================================================
-# SYSTEM UTILITIES - Configuration and system operations  
-# ============================================================================
-
-r = 'reload-config'                                 # Reload AeroSpace configuration
-q = 'quit'                                          # Quit AeroSpace (use with caution)
-shift-s = 'exec-and-forget screencapture -i -c'    # Interactive screenshot to clipboard
+# Quick mode switching
+cmd-shift-w = [
+    'mode window',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh window',
+]
+cmd-shift-s = [
+    'mode space',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh space',
+]
+cmd-shift-m = [
+    'mode maintenance',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh maintenance',
+]
 
 # ============================================================================
-# QUICK MODE SWITCHING - Jump to other modes without exiting
+# MAINTENANCE MODE - System utilities and configuration
+# ============================================================================
+# Less frequently used system operations, config management, themes
 # ============================================================================
 
-cmd-alt-w = [
-	'mode window',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh window',
-] # Switch to window mode
+[mode.maintenance.binding]
 
-cmd-alt-s = [
-	'mode workspace',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh workspace',
-] # Switch to workspace mode
-
-cmd-alt-l = [
-	'mode layout',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh layout',
-] # Switch to layout mode
-
-# ============================================================================
-# SERVICE MODE - Legacy mode (kept for compatibility)
-# ============================================================================
-# Original service mode from your previous configuration
-# 'service' binding mode declaration.
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-[mode.service.binding]
+# Exit mode
 esc = [
-	'reload-config',
-	'mode main',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
-]
-r = [
-	'flatten-workspace-tree',
-	'mode main',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
-] # reset layout
-#s = ['layout sticky tiling', 'mode main'] # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-f = ['layout floating tiling'] # Toggle between floating and tiling layout
-backspace = [
-	'close-all-windows-but-current',
-	'mode main',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
+    'mode main',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
 ]
 
-alt-shift-h = [
-	'join-with left',
-	'mode main',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
+# Configuration management
+r = 'reload-config'
+shift-r = 'exec-and-forget killall AeroSpace && open -a AeroSpace'
+
+# Theme and visual management
+t = 'exec-and-forget ~/.config/sketchybar/themes/switch-theme'
+shift-t = 'exec-and-forget ~/.config/sketchybar/helpers/event_providers/theme_switch.sh'
+
+# System utilities
+s = 'exec-and-forget screencapture -i -c'
+shift-s = 'exec-and-forget screencapture -i ~/Desktop/screenshot-$(date +%Y%m%d-%H%M%S).png'
+
+# Debug and diagnostics
+d = 'exec-and-forget ~/.config/sketchybar/helpers/event_providers/debug.sh'
+l = 'exec-and-forget open -a "Console"'
+
+# Backup and restore
+b = 'exec-and-forget cp ~/.config/aerospace/aerospace.toml ~/.config/aerospace/aerospace.toml.backup'
+shift-b = 'exec-and-forget open ~/.config/aerospace/'
+
+# Quick mode switching
+cmd-shift-w = [
+    'mode window',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh window',
 ]
-alt-shift-j = [
-	'join-with down',
-	'mode main',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
+cmd-shift-s = [
+    'mode space',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh space',
 ]
-alt-shift-k = [
-	'join-with up',
-	'mode main',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
-]
-alt-shift-l = [
-	'join-with right',
-	'mode main',
-	'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
+cmd-shift-l = [
+    'mode layout',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh layout',
 ]
 
+# ============================================================================
+# AUTOMATIC WINDOW ASSIGNMENT
+# ============================================================================
 
-# terminal
+# Terminal apps → Workspace T
 [[on-window-detected]]
 if.app-id = 'org.alacritty'
 run = "move-node-to-workspace T"
+
 [[on-window-detected]]
 if.app-id = 'dev.warp.Warp-Stable'
 run = "move-node-to-workspace T"
 
-# browser
+# Browser apps → Workspace B
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome'
 run = "move-node-to-workspace B"
+
 [[on-window-detected]]
 if.app-id = 'com.apple.Safari'
 run = "move-node-to-workspace B"
 
-# editor
+# Editor apps → Workspace E
 [[on-window-detected]]
 if.app-id = 'dev.zed.Zed'
 run = "move-node-to-workspace E"
+
 [[on-window-detected]]
 if.app-id = 'org.gnu.Emacs'
 run = "move-node-to-workspace E"
+
 [[on-window-detected]]
-if.app-id = 'com.todesktop.230313mzl4w4u92' # cursor
+if.app-id = 'com.todesktop.230313mzl4w4u92'
 run = "move-node-to-workspace E"
 
-# AI
+# AI tools → Workspace A
 [[on-window-detected]]
 if.app-id = 'com.openai.chat'
 run = "move-node-to-workspace A"
+
 [[on-window-detected]]
-if.app-id = 'com.google.Chrome.app.caidcmannjgahlnbpmidmiecjcoiiigg' #gemini
+if.app-id = 'com.google.Chrome.app.caidcmannjgahlnbpmidmiecjcoiiigg'
 run = "move-node-to-workspace A"
 
-# Calendar
+# Calendar → Workspace C
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
 run = "move-node-to-workspace C"
 
-# Messages
+# Messages → Workspace M
 [[on-window-detected]]
-if.app-id = 'com.google.Chrome.app.mdpkiolbdkhdjpekfbkbmhigcaggjagi' #gchat
+if.app-id = 'com.google.Chrome.app.mdpkiolbdkhdjpekfbkbmhigcaggjagi'
 run = "move-node-to-workspace M"
 
-# Meeting
+# Meeting → Workspace Z
 [[on-window-detected]]
 if.app-id = 'us.zoom.xos'
 run = "move-node-to-workspace Z"
