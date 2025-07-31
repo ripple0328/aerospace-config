@@ -158,26 +158,26 @@ esc = [
 ]
 
 # Resize windows
-minus = 'resize smart -50'
-equal = 'resize smart +50'
-shift-minus = 'resize smart -100'
-shift-equal = 'resize smart +100'
+minus = ['resize smart -50', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+equal = ['resize smart +50', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+shift-minus = ['resize smart -100', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+shift-equal = ['resize smart +100', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Join containers
-h = 'join-with left'
-j = 'join-with down'
-k = 'join-with up'
-l = 'join-with right'
+h = ['join-with left', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+j = ['join-with down', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+k = ['join-with up', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+l = ['join-with right', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Monitor operations
-m = 'focus-monitor --wrap-around next'
-shift-m = 'move-node-to-monitor --wrap-around next'
-ctrl-m = 'move-node-to-monitor --wrap-around prev'
+m = ['focus-monitor --wrap-around next', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+shift-m = ['move-node-to-monitor --wrap-around next', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+ctrl-m = ['move-node-to-monitor --wrap-around prev', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Window operations
-q = 'close'
-shift-q = 'close-all-windows-but-current'
-f = 'fullscreen'
+q = ['close', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+shift-q = ['close-all-windows-but-current', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+f = ['fullscreen', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Quick mode switching
 alt-ctrl-l = [
@@ -208,27 +208,27 @@ esc = [
 ]
 
 # Move window and follow (advanced operation)
-1 = ['move-node-to-workspace 1', 'workspace 1']
-2 = ['move-node-to-workspace 2', 'workspace 2']
-3 = ['move-node-to-workspace 3', 'workspace 3']
-a = ['move-node-to-workspace A', 'workspace A']
-b = ['move-node-to-workspace B', 'workspace B']
-c = ['move-node-to-workspace C', 'workspace C']
-e = ['move-node-to-workspace E', 'workspace E']
-t = ['move-node-to-workspace T', 'workspace T']
-m = ['move-node-to-workspace M', 'workspace M']
-z = ['move-node-to-workspace Z', 'workspace Z']
+1 = ['move-node-to-workspace 1', 'workspace 1', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+2 = ['move-node-to-workspace 2', 'workspace 2', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+3 = ['move-node-to-workspace 3', 'workspace 3', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+a = ['move-node-to-workspace A', 'workspace A', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+b = ['move-node-to-workspace B', 'workspace B', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+c = ['move-node-to-workspace C', 'workspace C', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+e = ['move-node-to-workspace E', 'workspace E', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+t = ['move-node-to-workspace T', 'workspace T', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+m = ['move-node-to-workspace M', 'workspace M', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+z = ['move-node-to-workspace Z', 'workspace Z', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Workspace navigation
-left = 'workspace --wrap-around prev'
-right = 'workspace --wrap-around next'
-up = 'workspace --wrap-around prev'
-down = 'workspace --wrap-around next'
-tab = 'workspace-back-and-forth'
+left = ['workspace --wrap-around prev', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+right = ['workspace --wrap-around next', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+up = ['workspace --wrap-around prev', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+down = ['workspace --wrap-around next', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+tab = ['workspace-back-and-forth', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Move workspaces between monitors
-shift-left = 'move-workspace-to-monitor --wrap-around prev'
-shift-right = 'move-workspace-to-monitor --wrap-around next'
+shift-left = ['move-workspace-to-monitor --wrap-around prev', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+shift-right = ['move-workspace-to-monitor --wrap-around next', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Quick mode switching
 alt-ctrl-w = [
@@ -259,22 +259,22 @@ esc = [
 ]
 
 # Layout types
-t = 'layout tiles horizontal vertical'
-c = 'layout accordion horizontal vertical'
-f = 'layout floating tiling'
+t = ['layout tiles horizontal vertical', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+c = ['layout accordion horizontal vertical', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+f = ['layout floating tiling', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Orientation control
-h = 'layout tiles horizontal'
-v = 'layout tiles vertical'
+h = ['layout tiles horizontal', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+v = ['layout tiles vertical', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Container operations
-r = 'flatten-workspace-tree'
-b = 'balance-sizes'
+r = ['flatten-workspace-tree', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+b = ['balance-sizes', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Quick layout switching
-slash = 'layout tiles horizontal vertical'
-comma = 'layout accordion horizontal vertical'
-period = 'layout floating tiling'
+slash = ['layout tiles horizontal vertical', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+comma = ['layout accordion horizontal vertical', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+period = ['layout floating tiling', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Quick mode switching
 alt-ctrl-w = [
@@ -305,17 +305,17 @@ esc = [
 ]
 
 # Application launching (semantic keys)
-t = 'exec-and-forget open -na "Alacritty"'
-b = 'exec-and-forget open -na "Google Chrome" --args --profile-directory="Default"'
-shift-b = 'exec-and-forget open -a "Google Chrome" --args --profile-directory="Profile 1"'
-s = 'exec-and-forget open -na "Safari"'
-e = 'exec-and-forget open -a "Zed"'
-shift-e = 'exec-and-forget open -a "Emacs"'
-c = 'exec-and-forget open -a "Calendar"'
-a = 'exec-and-forget open -a "ChatGPT"'
-m = 'exec-and-forget open -a "Messages"'
-f = 'exec-and-forget open -a "Finder"'
-n = 'exec-and-forget open -a "Notes"'
+t = ['exec-and-forget open -na "Alacritty"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+b = ['exec-and-forget open -na "Google Chrome" --args --profile-directory="Default"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+shift-b = ['exec-and-forget open -a "Google Chrome" --args --profile-directory="Profile 1"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+s = ['exec-and-forget open -na "Safari"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+e = ['exec-and-forget open -a "Zed"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+shift-e = ['exec-and-forget open -a "Emacs"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+c = ['exec-and-forget open -a "Calendar"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+a = ['exec-and-forget open -a "ChatGPT"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+m = ['exec-and-forget open -a "Messages"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+f = ['exec-and-forget open -a "Finder"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+n = ['exec-and-forget open -a "Notes"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Quick mode switching
 alt-ctrl-w = [
@@ -346,15 +346,15 @@ esc = [
 ]
 
 # Configuration management
-r = 'reload-config'
-shift-r = 'exec-and-forget killall AeroSpace && open -a AeroSpace'
+r = ['reload-config', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+shift-r = ['exec-and-forget killall AeroSpace && open -a AeroSpace', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Theme and visual management
-t = 'exec-and-forget ~/.config/sketchybar/themes/theme-manager.sh'
+t = ['exec-and-forget ~/.config/sketchybar/themes/theme-manager.sh', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # System utilities
-s = 'exec-and-forget screencapture -i -c'
-shift-s = 'exec-and-forget screencapture -i ~/Desktop/screenshot-$(date +%Y%m%d-%H%M%S).png'
+s = ['exec-and-forget screencapture -i -c', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+shift-s = ['exec-and-forget screencapture -i ~/Desktop/screenshot-$(date +%Y%m%d-%H%M%S).png', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Quick mode switching
 alt-ctrl-w = [
