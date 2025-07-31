@@ -11,11 +11,11 @@ Refactored AeroSpace tiling window manager with optimized hybrid approach: frequ
 
 ### Mode Overview
 - **Main Mode**: Window focus/movement, workspace switching, move-to-workspace
-- **cmd-shift-w** = **Window** mode (resize, join, monitor, close operations)
-- **cmd-shift-s** = **Space** mode (move-and-follow, navigation, monitor ops)
-- **cmd-shift-l** = **Layout** mode (layouts, containers)
-- **cmd-shift-a** = **App** mode (application launching)
-- **cmd-shift-m** = **Maintenance** mode (system utilities, config, themes)
+- **alt-ctrl-w** = **Window** mode (resize, join, monitor, close operations)
+- **alt-ctrl-s** = **Space** mode (move-and-follow, navigation, monitor ops)
+- **alt-ctrl-l** = **Layout** mode (layouts, containers)
+- **alt-ctrl-a** = **App** mode (application launching)
+- **alt-ctrl-m** = **Maintenance** mode (system utilities, config, themes)
 
 ### Mode Navigation
 - **Single exit**: `esc` always returns to main mode
@@ -24,8 +24,8 @@ Refactored AeroSpace tiling window manager with optimized hybrid approach: frequ
 
 ## 🎯 Workspace Organization
 
-### 12 Configured Workspaces
-- **1-5**: Project workspaces (organize windows by project)
+### 10 Configured Workspaces
+- **1-3**: Project workspaces (organize windows by project)
 - **A**: AI tools (ChatGPT, Google Gemini)
 - **B**: Browsers (Chrome, Safari) 
 - **C**: Calendar
@@ -51,22 +51,22 @@ alt-shift-h/j/k/l              # Move window left/down/up/right
 ```bash
 # Workspace switching - VERY FREQUENT
 alt-tab                        # Back-and-forth between recent workspaces
-alt-1/2/3/4/5                  # Switch to numbered workspaces  
+alt-1/2/3                  # Switch to numbered workspaces  
 alt-a/b/c/e/t/m/z              # Switch to semantic workspaces
 
 # Move window to workspace - FREQUENT
-cmd-alt-1/2/3/4/5              # Move window to numbered workspace
+cmd-alt-1/2/3              # Move window to numbered workspace
 cmd-alt-a/b/c/e/t/m/z          # Move window to semantic workspace
 ```
 
 #### Essential Shortcuts
 ```bash
 # Mode switching
-cmd-shift-w                    # Enter Window mode
-cmd-shift-s                    # Enter Space mode
-cmd-shift-l                    # Enter Layout mode  
-cmd-shift-a                    # Enter App mode
-cmd-shift-m                    # Enter Maintenance mode
+alt-ctrl-w                    # Enter Window mode
+alt-ctrl-s                    # Enter Space mode
+alt-ctrl-l                    # Enter Layout mode  
+alt-ctrl-a                    # Enter App mode
+alt-ctrl-m                    # Enter Maintenance mode
 
 # Quick actions
 alt-f                          # Fullscreen current window
@@ -75,7 +75,7 @@ alt-f                          # Fullscreen current window
 cmd-h                          # Disabled (was "hide application")
 ```
 
-### Window Mode (cmd-shift-w) - Advanced Window Operations
+### Window Mode (alt-ctrl-w) - Advanced Window Operations
 
 ```bash
 # Exit
@@ -99,19 +99,19 @@ shift-q                        # Close all windows except current
 f                              # Toggle fullscreen
 
 # Cross-mode switching
-cmd-shift-l                    # → Layout mode
-cmd-shift-a                    # → App mode
-cmd-shift-m                    # → Maintenance mode
+alt-ctrl-l                    # → Layout mode
+alt-ctrl-a                    # → App mode
+alt-ctrl-m                    # → Maintenance mode
 ```
 
-### Space Mode (cmd-shift-s) - Advanced Workspace Operations
+### Space Mode (alt-ctrl-s) - Advanced Workspace Operations
 
 ```bash
 # Exit
 esc                            # Return to main mode
 
 # Move window and follow (repurposed keys since switching moved to main)
-1-5, a,b,c,e,t,m,z            # Move window to workspace and switch to it
+1-3, a,b,c,e,t,m,z            # Move window to workspace and switch to it
 
 # Workspace navigation
 left/right                     # Previous/next workspace (wraps around)
@@ -122,13 +122,13 @@ tab                            # Toggle between recent workspaces
 shift-left/right               # Move workspace to prev/next monitor
 
 # Cross-mode switching
-cmd-shift-w                    # → Window mode
-cmd-shift-l                    # → Layout mode
-cmd-shift-a                    # → App mode
-cmd-shift-m                    # → Maintenance mode
+alt-ctrl-w                    # → Window mode
+alt-ctrl-l                    # → Layout mode
+alt-ctrl-a                    # → App mode
+alt-ctrl-m                    # → Maintenance mode
 ```
 
-### Layout Mode (cmd-shift-l) - Layout Control
+### Layout Mode (alt-ctrl-l) - Layout Control
 
 ```bash
 # Exit
@@ -153,13 +153,13 @@ b                              # Balance all window sizes
 .                              # Quick floating toggle
 
 # Cross-mode switching
-cmd-shift-w                    # → Window mode
-cmd-shift-s                    # → Space mode
-cmd-shift-a                    # → App mode
-cmd-shift-m                    # → Maintenance mode
+alt-ctrl-w                    # → Window mode
+alt-ctrl-s                    # → Space mode
+alt-ctrl-a                    # → App mode
+alt-ctrl-m                    # → Maintenance mode
 ```
 
-### App Mode (cmd-shift-a) - Application Launching
+### App Mode (alt-ctrl-a) - Application Launching
 
 ```bash
 # Exit
@@ -179,13 +179,13 @@ f                              # Launch Finder
 n                              # Launch Notes
 
 # Cross-mode switching
-cmd-shift-w                    # → Window mode
-cmd-shift-s                    # → Space mode
-cmd-shift-l                    # → Layout mode
-cmd-shift-m                    # → Maintenance mode
+alt-ctrl-w                    # → Window mode
+alt-ctrl-s                    # → Space mode
+alt-ctrl-l                    # → Layout mode
+alt-ctrl-m                    # → Maintenance mode
 ```
 
-### Maintenance Mode (cmd-shift-m) - System Utilities
+### Maintenance Mode (alt-ctrl-m) - System Utilities
 
 ```bash
 # Exit
@@ -212,9 +212,9 @@ b                              # Backup current config
 shift-b                        # Open config directory
 
 # Cross-mode switching
-cmd-shift-w                    # → Window mode
-cmd-shift-s                    # → Space mode
-cmd-shift-l                    # → Layout mode
+alt-ctrl-w                    # → Window mode
+alt-ctrl-s                    # → Space mode
+alt-ctrl-l                    # → Layout mode
 ```
 
 ## 🎨 Visual Configuration
@@ -313,7 +313,7 @@ alt-h/j/k/l                    # Focus windows
 alt-shift-h/j/k/l              # Move windows
 
 # Workspace management (immediate access)  
-alt-1/2/3/4/5                  # Switch to numbered workspaces
+alt-1/2/3                  # Switch to numbered workspaces
 alt-a/b/c/e/t/m/z              # Switch to semantic workspaces
 cmd-alt-[key]                  # Move window to workspace
 ```
@@ -321,19 +321,19 @@ cmd-alt-[key]                  # Move window to workspace
 ### 2. Use Modes for Advanced Operations
 ```bash
 # Advanced window operations
-cmd-shift-w                    # Resize, join, monitor ops
+alt-ctrl-w                    # Resize, join, monitor ops
 
 # Advanced workspace operations
-cmd-shift-s                    # Move-and-follow, navigation
+alt-ctrl-s                    # Move-and-follow, navigation
 
 # Layout control
-cmd-shift-l                    # Change layouts, containers
+alt-ctrl-l                    # Change layouts, containers
 
 # App launching
-cmd-shift-a                    # Launch apps with semantic keys
+alt-ctrl-a                    # Launch apps with semantic keys
 
 # System maintenance  
-cmd-shift-m                    # Config, themes, utilities
+alt-ctrl-m                    # Config, themes, utilities
 ```
 
 ### 3. Essential Workflows
@@ -344,14 +344,14 @@ alt-shift-h/j/k/l              # Rearrange windows
 alt-1/2/3/a/b/e/t              # Switch workspaces
 
 # Launch and organize
-cmd-shift-a, t                 # Launch terminal
-cmd-shift-a, b                 # Launch browser  
-cmd-shift-a, e                 # Launch editor
+alt-ctrl-a, t                 # Launch terminal
+alt-ctrl-a, b                 # Launch browser  
+alt-ctrl-a, e                 # Launch editor
 
 # Advanced operations when needed
-cmd-shift-w, -/=               # Resize windows
-cmd-shift-s, 1-5               # Move window and follow
-cmd-shift-l, t/c/f             # Change layouts
+alt-ctrl-w, -/=               # Resize windows
+alt-ctrl-s, 1-3               # Move window and follow
+alt-ctrl-l, t/c/f             # Change layouts
 ```
 
 ### 4. Power User Tips

@@ -1,14 +1,10 @@
 # AeroSpace Configuration
-# Refactored with consistent cmd-shift-x mode switching and clean mode organization
+# Refactored with consistent alt-ctrl-x mode switching and clean mode organization
 
 # ============================================================================
 # CORE CONFIGURATION
 # ============================================================================
 
-after-login-command = [
-    'exec-and-forget sketchybar',
-    'exec-and-forget borders active_color=0xff8aadf4 inactive_color=0xff494d64 width=1.5 2>/dev/null &'
-]
 
 after-startup-command = [
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
@@ -51,44 +47,44 @@ outer.right = 10
 # Most frequent operations are directly accessible with clean prefix patterns:
 # - alt-hjkl = Window focus (immediate access)
 # - alt-shift-hjkl = Window movement (immediate access)
-# - alt-[key] = Workspace switching (immediate access)
-# - cmd-alt-[key] = Move window to workspace (immediate access)
+# - alt-[1-3,letters] = Workspace switching (immediate access)
+# - cmd-alt-[1-3,letters] = Move window to workspace (immediate access)
 #
-# Mode Switchers for advanced operations: cmd-shift-[letter]
-# - cmd-shift-w = Window mode (resize, join, monitor, close operations)
-# - cmd-shift-s = Space mode (advanced workspace operations)
-# - cmd-shift-l = Layout mode (layouts, containers)
-# - cmd-shift-a = App mode (application launching)
-# - cmd-shift-m = Maintenance mode (system utilities, config, themes)
+# Mode Switchers for advanced operations: alt-ctrl-[letter]
+# - alt-ctrl-w = Window mode (resize, join, monitor, close operations)
+# - alt-ctrl-s = Space mode (advanced workspace operations)
+# - alt-ctrl-l = Layout mode (layouts, containers)
+# - alt-ctrl-a = App mode (application launching)
+# - alt-ctrl-m = Maintenance mode (system utilities, config, themes)
 # ============================================================================
 
 [mode.main.binding]
 
 # ============================================================================
-# MODE SWITCHERS - cmd-shift-[letter] pattern
+# MODE SWITCHERS - alt-ctrl-[letter] pattern
 # ============================================================================
 
-cmd-shift-w = [
+alt-ctrl-w = [
     'mode window',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh window',
 ]
 
-cmd-shift-s = [
+alt-ctrl-s = [
     'mode space',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh space',
 ]
 
-cmd-shift-l = [
+alt-ctrl-l = [
     'mode layout',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh layout',
 ]
 
-cmd-shift-a = [
+alt-ctrl-a = [
     'mode app',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh app',
 ]
 
-cmd-shift-m = [
+alt-ctrl-m = [
     'mode maintenance',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh maintenance',
 ]
@@ -118,8 +114,6 @@ alt-tab = 'workspace-back-and-forth'
 alt-1 = 'workspace 1'
 alt-2 = 'workspace 2'
 alt-3 = 'workspace 3'
-alt-4 = 'workspace 4'
-alt-5 = 'workspace 5'
 alt-a = 'workspace A'
 alt-b = 'workspace B'
 alt-c = 'workspace C'
@@ -132,8 +126,6 @@ alt-z = 'workspace Z'
 cmd-alt-1 = 'move-node-to-workspace 1'
 cmd-alt-2 = 'move-node-to-workspace 2'
 cmd-alt-3 = 'move-node-to-workspace 3'
-cmd-alt-4 = 'move-node-to-workspace 4'
-cmd-alt-5 = 'move-node-to-workspace 5'
 cmd-alt-a = 'move-node-to-workspace A'
 cmd-alt-b = 'move-node-to-workspace B'
 cmd-alt-c = 'move-node-to-workspace C'
@@ -188,15 +180,15 @@ shift-q = 'close-all-windows-but-current'
 f = 'fullscreen'
 
 # Quick mode switching
-cmd-shift-l = [
+alt-ctrl-l = [
     'mode layout',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh layout',
 ]
-cmd-shift-a = [
+alt-ctrl-a = [
     'mode app',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh app',
 ]
-cmd-shift-m = [
+alt-ctrl-m = [
     'mode maintenance',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh maintenance',
 ]
@@ -219,8 +211,6 @@ esc = [
 1 = ['move-node-to-workspace 1', 'workspace 1']
 2 = ['move-node-to-workspace 2', 'workspace 2']
 3 = ['move-node-to-workspace 3', 'workspace 3']
-4 = ['move-node-to-workspace 4', 'workspace 4']
-5 = ['move-node-to-workspace 5', 'workspace 5']
 a = ['move-node-to-workspace A', 'workspace A']
 b = ['move-node-to-workspace B', 'workspace B']
 c = ['move-node-to-workspace C', 'workspace C']
@@ -241,15 +231,15 @@ shift-left = 'move-workspace-to-monitor --wrap-around prev'
 shift-right = 'move-workspace-to-monitor --wrap-around next'
 
 # Quick mode switching
-cmd-shift-w = [
+alt-ctrl-w = [
     'mode window',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh window',
 ]
-cmd-shift-l = [
+alt-ctrl-l = [
     'mode layout',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh layout',
 ]
-cmd-shift-a = [
+alt-ctrl-a = [
     'mode app',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh app',
 ]
@@ -287,15 +277,15 @@ comma = 'layout accordion horizontal vertical'
 period = 'layout floating tiling'
 
 # Quick mode switching
-cmd-shift-w = [
+alt-ctrl-w = [
     'mode window',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh window',
 ]
-cmd-shift-a = [
+alt-ctrl-a = [
     'mode app',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh app',
 ]
-cmd-shift-m = [
+alt-ctrl-m = [
     'mode maintenance',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh maintenance',
 ]
@@ -328,15 +318,15 @@ f = 'exec-and-forget open -a "Finder"'
 n = 'exec-and-forget open -a "Notes"'
 
 # Quick mode switching
-cmd-shift-w = [
+alt-ctrl-w = [
     'mode window',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh window',
 ]
-cmd-shift-s = [
+alt-ctrl-s = [
     'mode space',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh space',
 ]
-cmd-shift-m = [
+alt-ctrl-m = [
     'mode maintenance',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh maintenance',
 ]
@@ -366,17 +356,16 @@ t = 'exec-and-forget ~/.config/sketchybar/themes/theme-manager.sh'
 s = 'exec-and-forget screencapture -i -c'
 shift-s = 'exec-and-forget screencapture -i ~/Desktop/screenshot-$(date +%Y%m%d-%H%M%S).png'
 
-
 # Quick mode switching
-cmd-shift-w = [
+alt-ctrl-w = [
     'mode window',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh window',
 ]
-cmd-shift-s = [
+alt-ctrl-s = [
     'mode space',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh space',
 ]
-cmd-shift-l = [
+alt-ctrl-l = [
     'mode layout',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh layout',
 ]
