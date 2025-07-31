@@ -360,20 +360,12 @@ r = 'reload-config'
 shift-r = 'exec-and-forget killall AeroSpace && open -a AeroSpace'
 
 # Theme and visual management
-t = 'exec-and-forget ~/.config/sketchybar/themes/switch-theme'
-shift-t = 'exec-and-forget ~/.config/sketchybar/helpers/event_providers/theme_switch.sh'
+t = 'exec-and-forget ~/.config/sketchybar/themes/theme-manager.sh'
 
 # System utilities
 s = 'exec-and-forget screencapture -i -c'
 shift-s = 'exec-and-forget screencapture -i ~/Desktop/screenshot-$(date +%Y%m%d-%H%M%S).png'
 
-# Debug and diagnostics
-d = 'exec-and-forget ~/.config/sketchybar/helpers/event_providers/debug.sh'
-l = 'exec-and-forget open -a "Console"'
-
-# Backup and restore
-b = 'exec-and-forget cp ~/.config/aerospace/aerospace.toml ~/.config/aerospace/aerospace.toml.backup'
-shift-b = 'exec-and-forget open ~/.config/aerospace/'
 
 # Quick mode switching
 cmd-shift-w = [
