@@ -99,11 +99,21 @@ alt-j = 'focus down'
 alt-k = 'focus up'
 alt-l = 'focus right'
 
+alt-left = 'focus left'
+alt-right = 'focus right'
+alt-up = 'focus up'
+alt-down = 'focus down'
+
 # Window movement
 alt-shift-h = 'move left'
 alt-shift-j = 'move down'
 alt-shift-k = 'move up'
 alt-shift-l = 'move right'
+
+alt-shift-left = 'move left'
+alt-shift-right = 'move right'
+alt-shift-up = 'move up'
+alt-shift-down = 'move down'
 
 # ============================================================================
 # FREQUENT WORKSPACE OPERATIONS - Direct access
@@ -140,8 +150,6 @@ cmd-alt-z = 'move-node-to-workspace Z'
 
 alt-f = 'fullscreen'
 
-# Disable conflicting macOS shortcuts
-cmd-h = []
 
 ## App quick Access
 cmd-enter = 'exec-and-forget open -na Alacritty'
@@ -163,10 +171,10 @@ esc = [
 ]
 
 # Resize windows
-minus = ['resize smart -50', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
-equal = ['resize smart +50', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
-shift-minus = ['resize smart -100', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
-shift-equal = ['resize smart +100', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+s = ['resize smart -50']
+d = ['resize smart +50']
+shift-s = ['resize smart -100']
+shift-d = ['resize smart +100']
 
 # Join containers
 h = ['join-with left', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
@@ -182,7 +190,6 @@ ctrl-m = ['move-node-to-monitor --wrap-around prev', 'mode main', 'exec-and-forg
 # Window operations
 q = ['close', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 shift-q = ['close-all-windows-but-current', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
-f = ['fullscreen', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Quick mode switching
 alt-ctrl-l = [
@@ -380,9 +387,6 @@ alt-ctrl-l = [
 # ============================================================================
 
 # Terminal apps → Workspace T
-[[on-window-detected]]
-if.app-id = 'org.alacritty'
-run = "move-node-to-workspace T"
 
 [[on-window-detected]]
 if.app-id = 'dev.warp.Warp-Stable'
