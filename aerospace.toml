@@ -142,7 +142,11 @@ alt-f = 'fullscreen'
 
 # Disable conflicting macOS shortcuts
 cmd-h = []
+
+## App quick Access
 cmd-enter = 'exec-and-forget open -na Alacritty'
+alt-shift-b = 'exec-and-forget open -na "Google Chrome" --args --profile-directory="Default"'
+
 
 # ============================================================================
 # WINDOW MODE - Advanced window operations
