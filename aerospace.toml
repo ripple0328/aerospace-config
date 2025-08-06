@@ -130,7 +130,6 @@ alt-c = 'workspace C'
 alt-e = 'workspace E'
 alt-t = 'workspace T'
 alt-m = 'workspace M'
-alt-z = 'workspace Z'
 
 # Move window to workspace (stay on current)
 cmd-alt-1 = 'move-node-to-workspace 1'
@@ -142,7 +141,6 @@ cmd-alt-c = 'move-node-to-workspace C'
 cmd-alt-e = 'move-node-to-workspace E'
 cmd-alt-t = 'move-node-to-workspace T'
 cmd-alt-m = 'move-node-to-workspace M'
-cmd-alt-z = 'move-node-to-workspace Z'
 
 # ============================================================================
 # ESSENTIAL SHORTCUTS
@@ -319,10 +317,10 @@ esc = [
 # Application launching (semantic keys)
 t = ['exec-and-forget open -na "Warp"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 b = ['exec-and-forget open -na "Google Chrome" --args --profile-directory="Default"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
-shift-b = ['exec-and-forget open -a "Google Chrome" --args --profile-directory="Profile 1"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+shift-b = ['exec-and-forget open -na "Google Chrome" --args --profile-directory="Profile 1"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 s = ['exec-and-forget open -na "Safari"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
-z = ['exec-and-forget open -na "Zed"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 e = ['exec-and-forget open -a "Emacs"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+z = ['exec-and-forget open -a "Zed"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 c = ['exec-and-forget open -a "Calendar"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 shift-c = ['exec-and-forget open -a "Google Chat"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 a = ['exec-and-forget open -a "ChatGPT"', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
@@ -366,7 +364,7 @@ t = ['exec-and-forget ~/.config/sketchybar/themes/theme-manager.sh', 'mode main'
 
 # System utilities
 s = ['exec-and-forget screencapture -i -c ~/Desktop/screenshot-$(date +%Y%m%d-%H%M%S).png', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
-shift-s = ['exec-and-forget screencapture -i ~/Desktop/screenshot-$(date +%Y%m%d-%H%M%S).png', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+shift-s = ['exec-and-forget screencapture -i -c ~/Desktop/screenshot-$(date +%Y%m%d-%H%M%S).png', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Quick mode switching
 alt-ctrl-w = [
