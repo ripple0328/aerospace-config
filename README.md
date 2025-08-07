@@ -57,8 +57,8 @@ aerospace --config-path ~/.config/aerospace/aerospace.toml
 - **B**: Browsers (Chrome, Safari) 
 - **C**: Calendar
 - **E**: Editors (Zed, Emacs, Cursor)
-- **T**: Terminals (Warp)
-- **M**: Messages (Mail, Google Chat)
+- **T**: Terminals (Warp, Allactty)
+- **M**: Messages (Mail, Google Chat, WeChat)
 
 ## ⌨️ Keybinding Reference
 

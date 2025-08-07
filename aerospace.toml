@@ -514,10 +514,17 @@ m = [
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
 ]
 f = [
-    'exec-and-forget open -a "Finder"',
+    'exec-and-forget open -a "finder"',
     'mode main',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
 ]
+w = [
+    'exec-and-forget open -a "Wechat"',
+    'mode main',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
+]
+
+
 
 # Quick mode switching
 alt-ctrl-w = [
@@ -644,4 +651,10 @@ run = "move-node-to-workspace C"
 # Messages → Workspace M
 [[on-window-detected]]
 if.app-id = 'com.google.Chrome.app.mdpkiolbdkhdjpekfbkbmhigcaggjagi' # google Chat (with your own app id)
+run = "move-node-to-workspace M"
+[[on-window-detected]]
+if.app-id = 'com.tencent.xinWeChat'
+run = "move-node-to-workspace M"
+[[on-window-detected]]
+if.app-id = 'com.apple.mail'
 run = "move-node-to-workspace M"
