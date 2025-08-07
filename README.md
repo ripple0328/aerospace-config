@@ -1,6 +1,33 @@
 # AeroSpace Configuration
 
-Refactored AeroSpace tiling window manager with optimized hybrid approach: frequent operations in main mode, advanced operations in focused modes.
+## Installation
+
+1. Install AeroSpace:
+```bash
+brew install --cask nikitabobko/tap/aerospace
+```
+
+2. Install dependencies:
+
+refer to https://github.com/ripple0328/sketchybar-config 
+```bash
+# SketchyBar (menu bar integration)
+brew install --cask sketchybar
+```
+
+3. Copy configuration files to AeroSpace config directory:
+```bash
+git clone https://github.com/ripple0328/aerospace-config.git ~/.config/aerospace
+```
+
+4. Grant necessary permissions:
+   - System Preferences → Privacy & Security → Accessibility → Add AeroSpace
+   - System Preferences → Privacy & Security → Screen Recording → Add AeroSpace (if using screenshots)
+
+5. Start AeroSpace:
+```bash
+aerospace --config-path ~/.config/aerospace/aerospace.toml
+```
 
 ## 🚀 Hybrid Mode System
 
@@ -24,15 +51,14 @@ Refactored AeroSpace tiling window manager with optimized hybrid approach: frequ
 
 ## 🎯 Workspace Organization
 
-### 10 Configured Workspaces
+### 7 Configured Workspaces
 - **1-3**: Project workspaces (organize windows by project)
-- **A**: AI tools (ChatGPT, Google Gemini)
+- **A**: AI tools (ChatGPT, Google Gemini, LM Studio)
 - **B**: Browsers (Chrome, Safari) 
 - **C**: Calendar
 - **E**: Editors (Zed, Emacs, Cursor)
-- **T**: Terminals (Alacritty, Warp)
-- **M**: Messages (Google Chat)
-- **Z**: Meetings (Zoom)
+- **T**: Terminals (Warp)
+- **M**: Messages (Mail, Google Chat)
 
 ## ⌨️ Keybinding Reference
 
@@ -42,21 +68,23 @@ Refactored AeroSpace tiling window manager with optimized hybrid approach: frequ
 ```bash
 # Window focus (vim-style) - MOST FREQUENT
 alt-h/j/k/l                    # Focus left/down/up/right
+alt-left/right/up/down         # Alternative arrow key focus
 
 # Window movement - VERY FREQUENT  
 alt-shift-h/j/k/l              # Move window left/down/up/right
+alt-shift-left/right/up/down   # Alternative arrow key movement
 ```
 
 #### Workspace Operations (Immediate Access)
 ```bash
 # Workspace switching - VERY FREQUENT
 alt-tab                        # Back-and-forth between recent workspaces
-alt-1/2/3                  # Switch to numbered workspaces  
-alt-a/b/c/e/t/m/z              # Switch to semantic workspaces
+alt-1/2/3                      # Switch to numbered workspaces  
+alt-a/b/c/e/t/m                # Switch to semantic workspaces
 
 # Move window to workspace - FREQUENT
-cmd-alt-1/2/3              # Move window to numbered workspace
-cmd-alt-a/b/c/e/t/m/z          # Move window to semantic workspace
+cmd-alt-1/2/3                  # Move window to numbered workspace
+cmd-alt-a/b/c/e/t/m            # Move window to semantic workspace
 ```
 
 #### Essential Shortcuts
@@ -70,6 +98,8 @@ alt-ctrl-m                    # Enter Maintenance mode
 
 # Quick actions
 alt-f                          # Fullscreen current window
+cmd-enter                      # Launch Alacritty (quick terminal)
+alt-shift-b                    # Launch Chrome Default profile
 
 # System overrides (disabled macOS shortcuts)
 cmd-h                          # Disabled (was "hide application")
@@ -82,8 +112,8 @@ cmd-h                          # Disabled (was "hide application")
 esc                            # Return to main mode
 
 # Resize windows
--/=                            # Resize smart -50/+50
-shift--/=                      # Resize smart -100/+100
+s/d                            # Resize smart -50/+50
+shift-s/d                      # Resize smart -100/+100
 
 # Join containers (repurposed hjkl since focus moved to main)
 h/j/k/l                        # Join with left/down/up/right window
@@ -111,7 +141,7 @@ alt-ctrl-m                    # → Maintenance mode
 esc                            # Return to main mode
 
 # Move window and follow (repurposed keys since switching moved to main)
-1-3, a,b,c,e,t,m,z            # Move window to workspace and switch to it
+1/2/3/a/b/c/e/t/m              # Move window to workspace and switch to it
 
 # Workspace navigation
 left/right                     # Previous/next workspace (wraps around)
@@ -166,17 +196,17 @@ alt-ctrl-m                    # → Maintenance mode
 esc                            # Return to main mode
 
 # Application launching (semantic keys match workspaces)
-t                              # Launch Alacritty (Terminal → workspace T)
+t                              # Launch Warp (Terminal → workspace T)
 b                              # Launch Chrome Default (Browser → workspace B)
 shift-b                        # Launch Chrome Profile 1 (Work browser)
 s                              # Launch Safari
-e                              # Launch Zed (Editor → workspace E)
-shift-e                        # Launch Emacs (Alternative editor)
+e                              # Launch Emacs (Editor → workspace E)
+z                              # Launch Zed (Editor → workspace E)
 c                              # Launch Calendar → workspace C
+shift-c                        # Launch Google Chat → workspace M
 a                              # Launch ChatGPT (AI → workspace A)
-m                              # Launch Messages → workspace M
+m                              # Launch Mail → workspace M
 f                              # Launch Finder
-n                              # Launch Notes
 
 # Cross-mode switching
 alt-ctrl-w                    # → Window mode
@@ -261,7 +291,6 @@ alt-ctrl-l                    # → Layout mode
 ## 🤖 Auto-Assignment Rules
 
 ### Terminal Apps → Workspace T
-- Alacritty (`org.alacritty`)
 - Warp (`dev.warp.Warp-Stable`)
 
 ### Browser Apps → Workspace B  
@@ -278,9 +307,10 @@ alt-ctrl-l                    # → Layout mode
 - Google Gemini (Chrome app)
 
 ### Other Apps
-- **Calendar** → Workspace C
-- **Google Chat** → Workspace M  
-- **Zoom** → Workspace Z
+- **Calendar** → Workspace C (`com.apple.iCal`)
+- **Mail** → Workspace M
+- **Google Chat** → Workspace M (`com.google.Chrome.app.mdpkiolbdkhdjpekfbkbmhigcaggjagi`)
+- **LM Studio** → Workspace A (`ai.elementlabs.lmstudio`)
 
 ## 🚀 Startup Behavior
 
@@ -297,8 +327,7 @@ alt-ctrl-l                    # → Layout mode
 
 ### Required
 - **AeroSpace**: Core window manager
-- **SketchyBar**: Menu bar integration  
-- **Borders**: Window border highlighting
+- **SketchyBar**: Menu bar integration
 
 ### System Requirements
 - **Accessibility permissions**: Required for window management
@@ -344,13 +373,14 @@ alt-shift-h/j/k/l              # Rearrange windows
 alt-1/2/3/a/b/e/t              # Switch workspaces
 
 # Launch and organize
-alt-ctrl-a, t                 # Launch terminal
-alt-ctrl-a, b                 # Launch browser  
-alt-ctrl-a, e                 # Launch editor
+alt-ctrl-a, t                 # Launch Warp terminal
+alt-ctrl-a, b                 # Launch Chrome browser  
+alt-ctrl-a, z                 # Launch Zed editor
+alt-ctrl-a, e                 # Launch Emacs editor
 
 # Advanced operations when needed
-alt-ctrl-w, -/=               # Resize windows
-alt-ctrl-s, 1-3               # Move window and follow
+alt-ctrl-w, s/d               # Resize windows
+alt-ctrl-s, 1/2/3             # Move window and follow
 alt-ctrl-l, t/c/f             # Change layouts
 ```
 
