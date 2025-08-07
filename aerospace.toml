@@ -363,8 +363,8 @@ shift-r = ['exec-and-forget killall AeroSpace && open -a AeroSpace', 'mode main'
 t = ['exec-and-forget ~/.config/sketchybar/themes/theme-manager.sh', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # System utilities
-s = ['exec-and-forget screencapture -i -c ~/Desktop/screenshot-$(date +%Y%m%d-%H%M%S).png', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
-shift-s = ['exec-and-forget screencapture -i -c ~/Desktop/screenshot-$(date +%Y%m%d-%H%M%S).png', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+s = ['exec-and-forget screencapture -ic', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
+shift-s = ['exec-and-forget screencapture -i ~/Desktop/screenshot-$(date +%Y%m%d-%H%M%S).png', 'mode main', 'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main']
 
 # Quick mode switching
 alt-ctrl-w = [
