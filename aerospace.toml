@@ -630,9 +630,12 @@ if.app-id = 'com.openai.chat'
 run = "move-node-to-workspace A"
 
 [[on-window-detected]]
-if.app-id = 'com.google.Chrome.app.caidcmannjgahlnbpmidmiecjcoiiigg'
+if.app-id = 'com.google.Chrome.app.caidcmannjgahlnbpmidmiecjcoiiigg' # Gemini (with your own app id)
 run = "move-node-to-workspace A"
 
+[[on-window-detected]]
+if.app-id = 'ai.elementlabs.lmstudio'
+run = "move-node-to-workspace A"
 # Calendar → Workspace C
 [[on-window-detected]]
 if.app-id = 'com.apple.iCal'
@@ -640,5 +643,5 @@ run = "move-node-to-workspace C"
 
 # Messages → Workspace M
 [[on-window-detected]]
-if.app-id = 'com.google.Chrome.app.mdpkiolbdkhdjpekfbkbmhigcaggjagi'
+if.app-id = 'com.google.Chrome.app.mdpkiolbdkhdjpekfbkbmhigcaggjagi' # google Chat (with your own app id)
 run = "move-node-to-workspace M"
