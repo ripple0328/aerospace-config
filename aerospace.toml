@@ -523,6 +523,11 @@ w = [
     'mode main',
     'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
 ]
+x = [
+    'exec-and-forget open -a "X"',
+    'mode main',
+    'exec-and-forget ~/.config/sketchybar/plugins/workspace/aerospace_mode.sh main',
+]
 
 
 
